@@ -9,39 +9,84 @@ public class NpcCycle : MonoBehaviour {
     public Transform endPos;
     public GameObject[] npcPrefabs;
 
+    private float speed = 3;
+
+    private bool movingToWaitPos = false;
+    private bool movingToEndPos = false;
+
     private bool cycleRunning = false;
     private GameObject npc = null;
+
+    private void Update()
+    {
+        if(movingToWaitPos)
+        {
+            Debug.Log("moving to wait pos");
+            npc.transform.position = Vector3.MoveTowards(
+                npc.transform.position, waitPos.position, speed * Time.deltaTime);
+
+            if (npc.transform.position == waitPos.position)
+            {
+                onReachedWaitPos();
+            }
+        }
+
+        if (movingToEndPos)
+        {
+            npc.transform.position = Vector3.MoveTowards(
+                npc.transform.position, endPos.position, speed * Time.deltaTime);
+
+            if (npc.transform.position == endPos.position)
+            {
+                onReachedEndPos();
+            }
+        }
+    }
 
     public void startNpcCycle()
     {
         Debug.Log("starting npc cycle...");
         cycleRunning = true;
+        spawnNPC();
     }
 
-    public void endtNpcCycle()
+    public void endNpcCycle()
     {
         Debug.Log("ending npc cycle...");
         cycleRunning = false;
     }
 
+    public void onReachedWaitPos()
+    {
+        // TODO: Instead of immediately continuing, give passport to player
+        // and fire switchNpc() when passport is given back
+        Debug.Log("reached wait pos");
+        movingToWaitPos = false;
+        switchNpc();
+    }
+
+    public void onReachedEndPos()
+    {
+        Debug.Log("reached end pos");
+        movingToEndPos = false;
+
+        GameObject.Destroy(npc);
+        spawnNPC();
+    }
+
     private void spawnNPC()
     {
+        Debug.Log("spawning npc...");
         if (!cycleRunning) return;
 
         npc = Instantiate(npcPrefabs[0], new Vector3(spawnPos.position.x, 
             spawnPos.position.y, spawnPos.position.z), Quaternion.identity);
 
-        // Move npc to waitPos
+        movingToWaitPos = true;
     }
 
     private void switchNpc()
     {
-        // TODO: Move npc to endPos
-        if (npc != null) {
-            GameObject.Destroy(npc);
-        }
-
-        spawnNPC();
+        movingToEndPos = true;
     }
-
 }
