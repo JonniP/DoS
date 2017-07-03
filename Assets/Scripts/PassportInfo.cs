@@ -36,12 +36,17 @@ public class PassportInfo : MonoBehaviour {
 
     public bool InformationIsCorrect { get; set; }
 
+    public bool HasBeenStamped { get { return stampable.HasBeenStamped; } }
+    public bool StampValue { get { return stampable.StampValue; } }
+
 
     private TextMesh txtName;
     private TextMesh txtSex;
     private TextMesh txtNationality;
     private TextMesh txtDateOfBirth;
     private TextMesh txtID;
+
+    private StampableSurfaceController stampable;
 
     void Start()
     {
@@ -65,5 +70,9 @@ public class PassportInfo : MonoBehaviour {
         tempObj = textHolder.Find("txt_id");
         if (tempObj != null) txtID = tempObj.GetComponent<TextMesh>();
         else Debug.Log("Passport has no txt_id!");
+
+        tempObj = transform.Find("StampableSurface");
+        if (tempObj != null) stampable = tempObj.GetComponent<StampableSurfaceController>();
+        else Debug.Log("Passport has no StampableSurface!");
     }
 }
