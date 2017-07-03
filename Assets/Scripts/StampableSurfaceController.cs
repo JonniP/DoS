@@ -31,7 +31,7 @@ public class StampableSurfaceController : MonoBehaviour {
                 {
                     GameObject stampObj = Instantiate(info.stampObject);
                     stampObj.transform.SetParent(transform);
-                    //TODO: put this at the right position
+                    //TODO: put this at the stamp's position
                     stampObj.transform.localPosition = new Vector3();
                     Vector3 objAngle = stampObj.transform.localRotation.eulerAngles;
                     stampObj.transform.localRotation = Quaternion.Euler(0, 0, objAngle.z);
