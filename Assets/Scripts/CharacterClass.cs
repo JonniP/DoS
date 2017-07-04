@@ -11,6 +11,8 @@ public class CharacterClass : MonoBehaviour {
     public string purposeOfStay;
     public string durationOfStay;
 
+    public NpcCycle cycle;
+
     public Transform passportSpawnPoint;
     public Transform permitSpawnPoint;
 
@@ -47,5 +49,22 @@ public class CharacterClass : MonoBehaviour {
         }
         else
             Debug.Log("No spawn point set for travel permit!");
+    }
+
+    public void CheckPassport()
+    {
+        //TODO: either move this to another object that tracks points and time or access that object from here
+
+        if (passport.HasBeenStamped)
+        {
+            if (passport.StampValue != passport.InformationIsCorrect)
+            {
+                //TODO: add a penalty point
+            }
+
+            GameObject.Destroy(passport.gameObject);
+            GameObject.Destroy(permit.gameObject);
+            cycle.switchNpc();
+        }
     }
 }
