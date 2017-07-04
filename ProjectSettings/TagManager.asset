@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - stamp
+  - passport
   layers:
   - Default
   - TransparentFX

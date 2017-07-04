@@ -7,21 +7,25 @@ public class NpcCycle : MonoBehaviour {
     public Transform spawnPos;
     public Transform waitPos;
     public Transform endPos;
+    public Transform passportSpawnPoint;
+    public Transform permitSpawnPoint;
+    public PassportReceiverController passportReceiver;
     public GameObject[] npcPrefabs;
 
     private float speed = 3;
 
     private bool movingToWaitPos = false;
     private bool movingToEndPos = false;
+    private bool movingBackToStart = false;
 
     private bool cycleRunning = false;
     private GameObject npc = null;
+    private CharacterClass npcClass = null;
 
     private void Update()
     {
         if(movingToWaitPos)
         {
-            Debug.Log("moving to wait pos");
             npc.transform.position = Vector3.MoveTowards(
                 npc.transform.position, waitPos.position, speed * Time.deltaTime);
 
@@ -30,13 +34,22 @@ public class NpcCycle : MonoBehaviour {
                 onReachedWaitPos();
             }
         }
-
-        if (movingToEndPos)
+        else if (movingToEndPos)
         {
             npc.transform.position = Vector3.MoveTowards(
                 npc.transform.position, endPos.position, speed * Time.deltaTime);
 
             if (npc.transform.position == endPos.position)
+            {
+                onReachedEndPos();
+            }
+        }
+        else if (movingBackToStart)
+        {
+            npc.transform.position = Vector3.MoveTowards(
+                npc.transform.position, spawnPos.position, speed * Time.deltaTime);
+
+            if (npc.transform.position == spawnPos.position)
             {
                 onReachedEndPos();
             }
@@ -58,17 +71,17 @@ public class NpcCycle : MonoBehaviour {
 
     public void onReachedWaitPos()
     {
-        // TODO: Instead of immediately continuing, give passport to player
-        // and fire switchNpc() when passport is given back
         Debug.Log("reached wait pos");
         movingToWaitPos = false;
-        switchNpc();
+
+        npcClass.GenerateDocuments();
     }
 
     public void onReachedEndPos()
     {
         Debug.Log("reached end pos");
         movingToEndPos = false;
+        movingBackToStart = false;
 
         GameObject.Destroy(npc);
         spawnNPC();
@@ -81,12 +94,18 @@ public class NpcCycle : MonoBehaviour {
 
         npc = Instantiate(npcPrefabs[0], new Vector3(spawnPos.position.x, 
             spawnPos.position.y, spawnPos.position.z), Quaternion.identity);
+        npcClass = npc.GetComponent<CharacterClass>();
+        npcClass.cycle = this;
+        npcClass.passportSpawnPoint = this.passportSpawnPoint;
+        npcClass.permitSpawnPoint = this.permitSpawnPoint;
+        passportReceiver.npc = npcClass;
 
         movingToWaitPos = true;
     }
 
-    private void switchNpc()
+    public void switchNpc(bool isApproved)
     {
-        movingToEndPos = true;
+        if (isApproved) movingToEndPos = true;
+        else movingBackToStart = true;
     }
 }

@@ -48,7 +48,7 @@ public class PassportInfo : MonoBehaviour {
 
     private StampableSurfaceController stampable;
 
-    void Start()
+    void Awake()
     {
         Transform textHolder = transform.Find("TextHolder");
         if (textHolder == null)
