@@ -10,6 +10,7 @@ public class CharacterClass : MonoBehaviour {
     public string id;
     public string purposeOfStay;
     public string durationOfStay;
+    public string passportExpiration;
 
     public NpcCycle cycle;
 
@@ -33,6 +34,7 @@ public class CharacterClass : MonoBehaviour {
             passport.Nationality = nationality;
             passport.DateOfBirth = dateOfBirth;
             passport.ID = id;
+            passport.ExpirationDate = passportExpiration;
         }
         else
             Debug.Log("No spawn point set for passport!");
