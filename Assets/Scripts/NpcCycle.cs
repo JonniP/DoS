@@ -12,7 +12,7 @@ public class NpcCycle : MonoBehaviour {
     public PassportReceiverController passportReceiver;
     public GameObject[] npcPrefabs;
 
-    private float speed = 3;
+    private float speed = 3.0f;
 
     private bool movingToWaitPos = false;
     private bool movingToEndPos = false;
@@ -31,6 +31,7 @@ public class NpcCycle : MonoBehaviour {
 
             if (npc.transform.position == waitPos.position)
             {
+                npc.transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
                 onReachedWaitPos();
             }
         }
@@ -72,6 +73,7 @@ public class NpcCycle : MonoBehaviour {
     public void onReachedWaitPos()
     {
         Debug.Log("reached wait pos");
+
         movingToWaitPos = false;
 
         npcClass.GenerateDocuments();
@@ -103,9 +105,14 @@ public class NpcCycle : MonoBehaviour {
         movingToWaitPos = true;
     }
 
-    public void switchNpc(bool isApproved)
+    public void switchNpc (bool isApproved)
     {
-        if (isApproved) movingToEndPos = true;
-        else movingBackToStart = true;
+        if (isApproved) {
+            npc.transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
+            movingToEndPos = true;
+        } else {
+            npc.transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
+            movingBackToStart = true;
+        }
     }
 }
