@@ -897,5 +897,8 @@ MonoBehaviour:
   dateOfBirth: 20.01.1985
   nationality: East-Sweden
   sex: Male
+  id: asdfa123
   purposeOfStay: Education
   durationOfStay: 10 weeks
+  passportSpawnPoint: {fileID: 0}
+  permitSpawnPoint: {fileID: 0}
