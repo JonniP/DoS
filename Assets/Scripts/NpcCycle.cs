@@ -16,6 +16,7 @@ public class NpcCycle : MonoBehaviour {
 
     private bool movingToWaitPos = false;
     private bool movingToEndPos = false;
+    private bool movingBackToStart = false;
 
     private bool cycleRunning = false;
     private GameObject npc = null;
@@ -33,13 +34,22 @@ public class NpcCycle : MonoBehaviour {
                 onReachedWaitPos();
             }
         }
-
-        if (movingToEndPos)
+        else if (movingToEndPos)
         {
             npc.transform.position = Vector3.MoveTowards(
                 npc.transform.position, endPos.position, speed * Time.deltaTime);
 
             if (npc.transform.position == endPos.position)
+            {
+                onReachedEndPos();
+            }
+        }
+        else if (movingBackToStart)
+        {
+            npc.transform.position = Vector3.MoveTowards(
+                npc.transform.position, spawnPos.position, speed * Time.deltaTime);
+
+            if (npc.transform.position == spawnPos.position)
             {
                 onReachedEndPos();
             }
@@ -71,6 +81,7 @@ public class NpcCycle : MonoBehaviour {
     {
         Debug.Log("reached end pos");
         movingToEndPos = false;
+        movingBackToStart = false;
 
         GameObject.Destroy(npc);
         spawnNPC();
@@ -92,8 +103,9 @@ public class NpcCycle : MonoBehaviour {
         movingToWaitPos = true;
     }
 
-    public void switchNpc()
+    public void switchNpc(bool isApproved)
     {
-        movingToEndPos = true;
+        if (isApproved) movingToEndPos = true;
+        else movingBackToStart = true;
     }
 }

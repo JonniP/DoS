@@ -64,7 +64,8 @@ public class CharacterClass : MonoBehaviour {
 
             GameObject.Destroy(passport.gameObject);
             GameObject.Destroy(permit.gameObject);
-            cycle.switchNpc();
+
+            cycle.switchNpc(passport.StampValue);
         }
     }
 }
