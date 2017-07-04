@@ -12,10 +12,15 @@ public class CharacterClass : MonoBehaviour {
     public string durationOfStay;
 
     public Transform passportSpawnPoint;
-    private PassportInfo passport;
+    public Transform permitSpawnPoint;
 
-    public void CreatePassport()
+    private PassportInfo passport;
+    private PermitInfo permit;
+
+    public void GenerateDocuments()
     {
+        //TODO: generate errors
+
         if (passportSpawnPoint != null)
         {
             GameObject pass = (GameObject)Instantiate(Resources.Load("passport"), passportSpawnPoint.position, Quaternion.Euler(-90, 0, 0));
@@ -29,5 +34,18 @@ public class CharacterClass : MonoBehaviour {
         }
         else
             Debug.Log("No spawn point set for passport!");
+
+        if (permitSpawnPoint != null)
+        {
+            GameObject perm = (GameObject)Instantiate(Resources.Load("TravelPermit"), permitSpawnPoint.position, Quaternion.identity);
+            permit = perm.GetComponent<PermitInfo>();
+
+            permit.Name = firstName + " " + lastName;
+            permit.ID = id;
+            permit.PurposeOfStay = purposeOfStay;
+            permit.DurationOfStay = durationOfStay;
+        }
+        else
+            Debug.Log("No spawn point set for travel permit!");
     }
 }

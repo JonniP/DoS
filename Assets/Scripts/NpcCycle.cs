@@ -8,6 +8,7 @@ public class NpcCycle : MonoBehaviour {
     public Transform waitPos;
     public Transform endPos;
     public Transform passportSpawnPoint;
+    public Transform permitSpawnPoint;
     public GameObject[] npcPrefabs;
 
     private float speed = 3;
@@ -64,7 +65,7 @@ public class NpcCycle : MonoBehaviour {
         Debug.Log("reached wait pos");
         movingToWaitPos = false;
 
-        npcClass.CreatePassport();
+        npcClass.GenerateDocuments();
     }
 
     public void onReachedEndPos()
@@ -85,6 +86,7 @@ public class NpcCycle : MonoBehaviour {
             spawnPos.position.y, spawnPos.position.z), Quaternion.identity);
         npcClass = npc.GetComponent<CharacterClass>();
         npcClass.passportSpawnPoint = this.passportSpawnPoint;
+        npcClass.permitSpawnPoint = this.permitSpawnPoint;
 
         movingToWaitPos = true;
     }
