@@ -51,6 +51,12 @@ public class PassportInfo : MonoBehaviour {
     void Start()
     {
         Transform textHolder = transform.Find("TextHolder");
+        if (textHolder == null)
+        {
+            Debug.Log("Passport has no TextHolder!");
+            return;
+        }
+
         Transform tempObj = textHolder.Find("txt_name");
         if (tempObj != null) txtName = tempObj.GetComponent<TextMesh>();
         else Debug.Log("Passport has no txt_name!");
