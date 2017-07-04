@@ -4551,6 +4551,7 @@ MonoBehaviour:
   endPos: {fileID: 999255955}
   passportSpawnPoint: {fileID: 1517705865}
   permitSpawnPoint: {fileID: 1471220841}
+  passportReceiver: {fileID: 1249161696}
   npcPrefabs:
   - {fileID: 1510468444194670, guid: aac3f6101cf35d64cbe1ab79650b26ac, type: 2}
 --- !u!4 &2120308402
