@@ -6,6 +6,7 @@ TagManager:
   tags:
   - stamp
   - passport
+  - fail
   layers:
   - Default
   - TransparentFX
