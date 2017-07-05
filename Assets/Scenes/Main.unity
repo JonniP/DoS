@@ -10416,7 +10416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b500982494e21947a3a646c40fdb617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 0
+  dayLength: 10000
 --- !u!1001 &2129152022
 Prefab:
   m_ObjectHideFlags: 0
