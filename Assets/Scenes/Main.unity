@@ -4554,6 +4554,8 @@ MonoBehaviour:
   passportReceiver: {fileID: 1249161696}
   npcPrefabs:
   - {fileID: 1510468444194670, guid: aac3f6101cf35d64cbe1ab79650b26ac, type: 2}
+  failStamp: {fileID: 0}
+  dayCycle: {fileID: 0}
 --- !u!4 &2120308402
 Transform:
   m_ObjectHideFlags: 0
@@ -4578,3 +4580,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b500982494e21947a3a646c40fdb617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayLength: 300

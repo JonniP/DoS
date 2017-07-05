@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 
 public class CharacterClass : MonoBehaviour {
@@ -14,7 +13,7 @@ public class CharacterClass : MonoBehaviour {
     //public string durationOfStay;
     //public string passportExpiration; ATM not used
 
-    public NpcCycle cycle;
+    public NpcCycle npcCycle;
 
     public Transform passportSpawnPoint;
     public Transform permitSpawnPoint;
@@ -22,7 +21,7 @@ public class CharacterClass : MonoBehaviour {
     private PassportInfo passport;
     private PermitInfo permit;
     private int FailCounter = 0;
-    private bool GameOver = false;
+    private StampableSurfaceController failStamp;
 
     public void GenerateDocuments()
     {
@@ -97,32 +96,27 @@ public class CharacterClass : MonoBehaviour {
 
     public void CheckPassport()
     {
-        
-
         if (passport.HasBeenStamped)
         {
-            if (GameOver)
-            {
-                if (passport.StampValue) SceneManager.LoadScene("Main");
-                else Application.Quit();
-            }
             if (passport.StampValue != passport.InformationIsCorrect)
             {
                 FailCounter++;
                 if (FailCounter >= 1)
                 {
-                    GameObject.Destroy(passport.gameObject);
-                    GameObject.Destroy(permit.gameObject);
                     GameObject fail = (GameObject)Instantiate(Resources.Load("Fail"), passportSpawnPoint.position, Quaternion.Euler(-90, 0, 0));
-                    passport = fail.GetComponent<PassportInfo>();
-                    GameOver = true;
+                    npcCycle.dayCycle.SetGameOver(fail.GetComponentInChildren<StampableSurfaceController>());
                 }
             }
 
             GameObject.Destroy(passport.gameObject);
             GameObject.Destroy(permit.gameObject);
 
-            cycle.switchNpc(passport.StampValue);
+            npcCycle.switchNpc(passport.StampValue);
         }
+    }
+
+    public void CheckFail()
+    {
+        npcCycle.dayCycle.CheckFail();
     }
 }

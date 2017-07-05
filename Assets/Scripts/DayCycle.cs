@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayCycle : MonoBehaviour {
 
-    private int dayLength = 30;
+    public int dayLength;
     private float timeLeft = 0;
     private bool cycleRunning = false;
     private NpcCycle npcCycle = null;
+    private StampableSurfaceController failStamp = null;
 
 	void Start () {
         npcCycle = this.gameObject.GetComponent<NpcCycle>();
+        npcCycle.dayCycle = this;
         startDay();
 	}
 
@@ -40,5 +43,29 @@ public class DayCycle : MonoBehaviour {
         npcCycle.endNpcCycle();
 
 
+    }
+
+    public void SetGameOver(StampableSurfaceController stamp)
+    {
+        Debug.Log("Game over!");
+        failStamp = stamp;
+        cycleRunning = false;
+        npcCycle.endNpcCycle();
+    }
+
+    public void CheckFail()
+    {
+        if (failStamp != null)
+        {
+            if (failStamp.HasBeenStamped)
+            {
+                if (failStamp.StampValue)
+                    SceneManager.LoadScene("Main");
+                else
+                    Application.Quit();
+            }
+        }
+        else
+            Debug.Log("No fail object currently in play");
     }
 }

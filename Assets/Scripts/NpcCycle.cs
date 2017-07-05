@@ -21,6 +21,8 @@ public class NpcCycle : MonoBehaviour {
     private bool cycleRunning = false;
     private GameObject npc = null;
     private CharacterClass npcClass = null;
+    public StampableSurfaceController failStamp = null;
+    public DayCycle dayCycle;
 
     private void Update()
     {
@@ -97,7 +99,7 @@ public class NpcCycle : MonoBehaviour {
         npc = Instantiate(npcPrefabs[0], new Vector3(spawnPos.position.x, 
             spawnPos.position.y, spawnPos.position.z), Quaternion.identity);
         npcClass = npc.GetComponent<CharacterClass>();
-        npcClass.cycle = this;
+        npcClass.npcCycle = this;
         npcClass.passportSpawnPoint = this.passportSpawnPoint;
         npcClass.permitSpawnPoint = this.permitSpawnPoint;
         passportReceiver.npc = npcClass;

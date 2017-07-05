@@ -24,10 +24,9 @@ GameObject:
   - component: {fileID: 54709269035923956}
   - component: {fileID: 65303338633429456}
   - component: {fileID: 114926119592307590}
-  - component: {fileID: 114810613419780394}
   m_Layer: 0
   m_Name: Fail
-  m_TagString: passport
+  m_TagString: fail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,17 +362,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb07f82e1decc3445bea4eac43c345e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114810613419780394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031932727926550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5645c5915261af443a6a4a3bcd720f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114926119592307590

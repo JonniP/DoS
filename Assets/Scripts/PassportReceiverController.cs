@@ -12,5 +12,9 @@ public class PassportReceiverController : MonoBehaviour {
         {
             npc.CheckPassport();
         }
+        else if (other.CompareTag("fail"))
+        {
+            npc.CheckFail();
+        }
     }
 }
