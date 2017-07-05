@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 23028482590945074}
   - component: {fileID: 102790449277984326}
   m_Layer: 0
-  m_Name: label_passport
+  m_Name: assportassport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,9 +337,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552237324824648}
-  m_Text: "You have Failed!\nYou have authorised\npassage for people with\ninvalid
-    travel documents!\nThe country is in turmoil \nbecause of you!\n\nStamp 'Approved'
-    \nto start over \nor 'Denied' \nto quit the game"
+  m_Text: "You have Failed\ntoo many times!\nYou have authorised\npassage for people
+    with\ninvalid travel documents!\nThe country is in turmoil \nbecause of you!\n\nStamp
+    'Approved' \nto start over \nor 'Denied' \nto quit the game"
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
