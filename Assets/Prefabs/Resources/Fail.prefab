@@ -117,8 +117,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031932727926550}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.9700188, y: 2.4980273, z: 0.34600002}
-  m_LocalScale: {x: 1, y: 1.1, z: 1}
+  m_LocalPosition: {x: 0.682, y: 2.073, z: -0.226}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4795714403688318}
   - {fileID: 4662024217512878}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552237324824648}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.06, y: 0, z: -0.029}
+  m_LocalPosition: {x: 0.002, y: -0, z: -0.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4795714403688318}
@@ -337,16 +337,16 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552237324824648}
-  m_Text: "You have Failed! You have authorised\npassage for people with invalid travel\ndocuments!
-    The country is in turmoil \nbecause of you!\n\nStamp 'Approved' to start over
-    \nor 'Denied' to quit the game"
+  m_Text: "You have Failed!\nYou have authorised\npassage for people with\ninvalid
+    travel documents!\nThe country is in turmoil \nbecause of you!\n\nStamp 'Approved'
+    \nto start over \nor 'Denied' \nto quit the game"
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 25
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 74ecbea2c943042489fca60ce912e7b5, type: 3}
