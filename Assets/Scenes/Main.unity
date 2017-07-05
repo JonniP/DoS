@@ -4556,6 +4556,7 @@ MonoBehaviour:
   - {fileID: 1510468444194670, guid: aac3f6101cf35d64cbe1ab79650b26ac, type: 2}
   failStamp: {fileID: 0}
   dayCycle: {fileID: 0}
+  ErrorProbability: 33
 --- !u!4 &2120308402
 Transform:
   m_ObjectHideFlags: 0

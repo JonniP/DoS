@@ -18,6 +18,8 @@ public class CharacterClass : MonoBehaviour {
     public Transform passportSpawnPoint;
     public Transform permitSpawnPoint;
 
+    public int ErrorProbability;
+
     private PassportInfo passport;
     private PermitInfo permit;
     private int FailCounter = 0;
@@ -32,7 +34,8 @@ public class CharacterClass : MonoBehaviour {
         string[] SurNames = { "Johansson", "Andersson", "Karlsson", "Nilsson", "Eriksson", "Larsson", "Olsson", "Persson", "Gustavsson", "Jansson", "Andersen", "Lundberg", "Lindgren", "Berg", "Tapper", "Berglund", "Lindqvist", "Eklund", "Sandberg", "Fors", "Nygren", "Wallin", "Bjergersen", "Ekström", "Lindholm", "Bergman", "Smedlund", "Strohecker", "Strömberg", "Blom" };
         string[] durationofStay = { "One day", "Two days", "Three days", "Four days", "Five days", "Six days", "A week", "Two weeks", "Three weeks", "A month", "Two months", "A year", "Indefinite" };
         string[] purposeOfStay = { "Education", "Conference", "Business meeting", "Passing through", "Immigration", "Seeing family", "Seeing friend", "Vacation" };
-        
+
+        int rand = rng.Next(0, 101);
 
         if (passportSpawnPoint != null)
         {
@@ -54,9 +57,14 @@ public class CharacterClass : MonoBehaviour {
             passport.Nationality = Nationalities[rng.Next(0, 2)];
             passport.DateOfBirth = rng.Next(1, 31) + "/" + rng.Next(1, 13) + "/" + rng.Next(1900, 2018);
             passport.ID = rng.Next(100000, 200000).ToString();
-            passport.ExpirationDate = rng.Next(1, 31) + "/" + rng.Next(1, 13) + "/" + rng.Next(2016, 2023);
-            string[] Expiration = passport.ExpirationDate.Split('/');
-            if (Expiration[2] == "2016") passport.InformationIsCorrect = false;
+            passport.ExpirationDate = rng.Next(1, 31) + "/" + rng.Next(1, 13) + "/";
+            if (rand < ErrorProbability / 3)
+            {
+                passport.ExpirationDate += rng.Next(1998, 2016);
+                passport.InformationIsCorrect = false;
+            }
+            else
+                passport.ExpirationDate += rng.Next(2018, 2023);
 
         }
         else
@@ -67,8 +75,7 @@ public class CharacterClass : MonoBehaviour {
             GameObject perm = (GameObject)Instantiate(Resources.Load("TravelPermit"), permitSpawnPoint.position, Quaternion.identity);
             permit = perm.GetComponent<PermitInfo>();
 
-            int NameDecider = rng.Next(0, 101);
-            if (NameDecider > 10) permit.Name = passport.Name;
+            if (rand < ErrorProbability / 3 || rand > ErrorProbability * 2/3) permit.Name = passport.Name;
             else if (passport.Sex == "Male")
             {
                 permit.Name = MaleNames[rng.Next(0, 30)] + " " + SurNames[rng.Next(0, 30)];
@@ -80,7 +87,7 @@ public class CharacterClass : MonoBehaviour {
                 passport.InformationIsCorrect = false;
             }
 
-            if (rng.Next(0, 101) > 10) permit.ID = passport.ID;
+            if (rand < ErrorProbability * 2/3 || rand > ErrorProbability) permit.ID = passport.ID;
             else
             {
                 permit.ID = rng.Next(100000, 200000).ToString();

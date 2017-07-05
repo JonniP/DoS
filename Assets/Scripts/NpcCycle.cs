@@ -24,6 +24,8 @@ public class NpcCycle : MonoBehaviour {
     public StampableSurfaceController failStamp = null;
     public DayCycle dayCycle;
 
+    public int ErrorProbability = 40;
+
     private void Update()
     {
         if(movingToWaitPos)
@@ -102,6 +104,7 @@ public class NpcCycle : MonoBehaviour {
         npcClass.npcCycle = this;
         npcClass.passportSpawnPoint = this.passportSpawnPoint;
         npcClass.permitSpawnPoint = this.permitSpawnPoint;
+        npcClass.ErrorProbability = ErrorProbability;
         passportReceiver.npc = npcClass;
 
         movingToWaitPos = true;
