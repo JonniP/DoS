@@ -23,8 +23,10 @@ public class NpcCycle : MonoBehaviour {
     private CharacterClass npcClass = null;
     public StampableSurfaceController failStamp = null;
     public DayCycle dayCycle;
+    private int failCounter;
 
     public int ErrorProbability = 40;
+    public int MistakesToLose = 3;
 
     private void Update()
     {
@@ -118,6 +120,16 @@ public class NpcCycle : MonoBehaviour {
         } else {
             npc.transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
             movingBackToStart = true;
+        }
+    }
+
+    public void AddFail ()
+    {
+        failCounter++;
+        if (failCounter >= MistakesToLose)
+        {
+            GameObject fail = (GameObject)Instantiate(Resources.Load("Fail"), passportSpawnPoint.position, Quaternion.Euler(-90, 0, 0));
+            dayCycle.SetGameOver(fail.GetComponentInChildren<StampableSurfaceController>());
         }
     }
 }
