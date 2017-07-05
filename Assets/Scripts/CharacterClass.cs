@@ -32,13 +32,13 @@ public class CharacterClass : MonoBehaviour {
         string[] SurNames = { "Johansson", "Andersson", "Karlsson", "Nilsson", "Eriksson", "Larsson", "Olsson", "Persson", "Gustavsson", "Jansson", "Andersen", "Lundberg", "Lindgren", "Berg", "Tapper", "Berglund", "Lindqvist", "Eklund", "Sandberg", "Fors", "Nygren", "Wallin", "Bjergersen", "Ekström", "Lindholm", "Bergman", "Smedlund", "Strohecker", "Strömberg", "Blom" };
         string[] durationofStay = { "One day", "Two days", "Three days", "Four days", "Five days", "Six days", "A week", "Two weeks", "Three weeks", "A month", "Two months", "A year", "Indefinite" };
         string[] purposeOfStay = { "Education", "Conference", "Business meeting", "Passing through", "Immigration", "Seeing family", "Seeing friend", "Vacation" };
-        //bool LegitPerson = true; useless ATM
-        //TODO: generate errors;
+        
 
         if (passportSpawnPoint != null)
         {
             GameObject pass = (GameObject)Instantiate(Resources.Load("passport"), passportSpawnPoint.position, Quaternion.Euler(-90, 0, 0));
             passport = pass.GetComponent<PassportInfo>();
+            passport.InformationIsCorrect = true;
 
             if (rng.Next(0, 101)>= 54)
             {
