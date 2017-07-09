@@ -18,12 +18,10 @@ public class CharacterClass : MonoBehaviour {
     public Transform passportSpawnPoint;
     public Transform permitSpawnPoint;
 
-    public int MistakesToLose = 3;
     public int ErrorProbability;
 
     private PassportInfo passport;
     private PermitInfo permit;
-    private int FailCounter = 0;
     private StampableSurfaceController failStamp;
 
     public void GenerateDocuments()
@@ -108,12 +106,7 @@ public class CharacterClass : MonoBehaviour {
         {
             if (passport.StampValue != passport.InformationIsCorrect)
             {
-                FailCounter++;
-                if (FailCounter >= MistakesToLose)
-                {
-                    GameObject fail = (GameObject)Instantiate(Resources.Load("Fail"), passportSpawnPoint.position, Quaternion.Euler(-90, 0, 0));
-                    npcCycle.dayCycle.SetGameOver(fail.GetComponentInChildren<StampableSurfaceController>());
-                }
+                npcCycle.AddFail();
             }
 
             GameObject.Destroy(passport.gameObject);
