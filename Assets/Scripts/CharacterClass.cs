@@ -24,6 +24,15 @@ public class CharacterClass : MonoBehaviour {
     private PermitInfo permit;
     private StampableSurfaceController failStamp;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            Debug.Log("Character did not find animator");
+    }
+
     public void GenerateDocuments()
     {
         System.Random rng = new System.Random();
@@ -112,12 +121,18 @@ public class CharacterClass : MonoBehaviour {
             GameObject.Destroy(passport.gameObject);
             GameObject.Destroy(permit.gameObject);
 
-            npcCycle.switchNpc(passport.StampValue);
+            animator.SetBool("IsPassportReturned", true);
+            animator.SetBool("IsPassportApproved", passport.StampValue);
         }
     }
 
     public void CheckFail()
     {
         npcCycle.dayCycle.CheckFail();
+    }
+
+    public void Kill()
+    {
+        npcCycle.onReachedEndPos();
     }
 }

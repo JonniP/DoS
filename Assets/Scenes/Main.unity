@@ -5384,16 +5384,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 62742328}
+  - {fileID: 2037207584}
   - {fileID: 1073886598}
   - {fileID: 81433699}
   - {fileID: 986062484}
-  - {fileID: 2037207584}
   - {fileID: 1249161695}
   - {fileID: 2120308402}
   - {fileID: 1953156284}
   - {fileID: 1538945497}
-  - {fileID: 373511054}
   - {fileID: 1894350149}
+  - {fileID: 373511054}
   - {fileID: 27666245}
   - {fileID: 867234192}
   - {fileID: 1271354878}
@@ -9207,7 +9207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1118628555}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1894350150
 Light:
@@ -10279,7 +10279,7 @@ Transform:
   - {fileID: 1517705865}
   - {fileID: 1471220841}
   m_Father: {fileID: 1118628555}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2046812979
 Prefab:
@@ -10412,10 +10412,11 @@ MonoBehaviour:
   permitSpawnPoint: {fileID: 1471220841}
   passportReceiver: {fileID: 1249161696}
   npcPrefabs:
-  - {fileID: 1510468444194670, guid: aac3f6101cf35d64cbe1ab79650b26ac, type: 2}
+  - {fileID: 114023519257827166, guid: 2ddc99668d3018f428ad93a8441ee3ea, type: 2}
   failStamp: {fileID: 0}
   dayCycle: {fileID: 0}
   ErrorProbability: 33
+  MistakesToLose: 3
 --- !u!4 &2120308402
 Transform:
   m_ObjectHideFlags: 0
