@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DayCycle : MonoBehaviour {
 
+	public GameObject sunLight;
+	public AudioSource ambientSoundSource;
     public int dayLength;
     private float timeLeft = 0;
     private bool cycleRunning = false;
@@ -25,6 +27,8 @@ public class DayCycle : MonoBehaviour {
             {
                 endDay();
             }
+
+			sunLight.transform.Rotate (Vector3.right * Time.deltaTime);
         }
     }
 
@@ -34,6 +38,7 @@ public class DayCycle : MonoBehaviour {
         cycleRunning = true;
         timeLeft = dayLength;
         npcCycle.startNpcCycle();
+		ambientSoundSource.Play ();
     }
 
     void endDay()
