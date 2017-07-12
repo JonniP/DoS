@@ -7,6 +7,14 @@ TagManager:
   - stamp
   - passport
   - fail
+  - NewsPaper
+  - Map
+  - CutsceneCamera
+  - MapPointLower
+  - MapPointHigher
+  - PaperPointLower
+  - PaperPointHigher
+  - Fader
   layers:
   - Default
   - TransparentFX
