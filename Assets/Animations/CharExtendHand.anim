@@ -218,15 +218,15 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -0.138, y: 0, z: -2.31775}
-        inSlope: {x: -0.67175263, y: 0, z: 0.08489688}
-        outSlope: {x: -0, y: -0, z: 0.15887758}
+        value: {x: 3.2, y: 0, z: -0.4}
+        inSlope: {x: 0, y: 0, z: -0.18535708}
+        outSlope: {x: -0, y: -0, z: -0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.8166666
-        value: {x: -0.138, y: 0, z: -2.188}
-        inSlope: {x: 0, y: 0, z: 0.15887758}
-        outSlope: {x: 0, y: 0, z: 0}
+        time: 0.81666666
+        value: {x: 3.2, y: 0, z: -0.4}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: -0, y: -0, z: -0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -643,16 +643,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.138
-        inSlope: -0.67175263
+        value: 3.2
+        inSlope: 0
         outSlope: -0
         tangentMode: 69
       - serializedVersion: 2
-        time: 0.8166666
-        value: -0.138
+        time: 0.81666666
+        value: 3.2
         inSlope: 0
-        outSlope: 0
-        tangentMode: 5
+        outSlope: -0
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -670,11 +670,11 @@ AnimationClip:
         outSlope: -0
         tangentMode: 69
       - serializedVersion: 2
-        time: 0.8166666
+        time: 0.81666666
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 5
+        outSlope: -0
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -687,16 +687,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -2.31775
-        inSlope: 0.08489688
-        outSlope: 0.15887758
+        value: -0.4
+        inSlope: -0.18535708
+        outSlope: -0
         tangentMode: 69
       - serializedVersion: 2
-        time: 0.8166666
-        value: -2.188
-        inSlope: 0.15887758
-        outSlope: 0
-        tangentMode: 5
+        time: 0.81666666
+        value: -0.4
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
